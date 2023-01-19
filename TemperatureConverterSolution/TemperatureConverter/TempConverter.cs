@@ -48,8 +48,7 @@ namespace TemperatureConverter
                 double Number = Convert.ToDouble(textBox1.Text);
                 double Result = TempCconverter(Number, label1.Text, label2.Text);
                 textBox2.Text = Result.ToString();
-            }
-            
+            }            
         }
 
         private void textBox1_KeyUp(object sender, KeyEventArgs e)
@@ -79,7 +78,6 @@ namespace TemperatureConverter
                     DBconnection.Close();
                 }
             }           
-            
         }
 
         private void textBox2_KeyUp(object sender, KeyEventArgs e)
