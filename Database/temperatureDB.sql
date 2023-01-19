@@ -4,7 +4,6 @@ USE temperature_converter_db
 GO
 CREATE TABLE temperature_convert_history (
 	convert_id INT IDENTITY(1,1),
-	name VARCHAR(20) NOT NULL,
 	converted_from VARCHAR(20) NOT NULL,
 	converted_to VARCHAR(20) NOT NULL,
 	converted_number INT NOT NULL,
