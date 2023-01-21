@@ -6,7 +6,7 @@ CREATE TABLE temperature_convert_history (
 	convert_id INT IDENTITY(1,1),
 	converted_from VARCHAR(20) NOT NULL,
 	converted_to VARCHAR(20) NOT NULL,
-	converted_number INT NOT NULL,
+	converted_number DECIMAL(18,4) NOT NULL,
 	result VARCHAR(50) NOT NULL,
 	converted_datetime DATETIME NOT NULL
 )
