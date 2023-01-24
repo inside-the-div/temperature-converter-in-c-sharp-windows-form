@@ -47,6 +47,7 @@ namespace TemperatureConverter
             SQLselectQuery.Fill(HistoryDataTable);
             DatagridviewHistory.DataSource = HistoryDataTable;
             this.DatagridviewHistory.Columns["ID"].Visible = false;
+            DatagridviewHistory.AutoResizeColumns();
         }       
 
         private void dateTimePickerSearch_ValueChanged(object sender, EventArgs e)
