@@ -65,8 +65,8 @@ namespace TemperatureConverter
                     string time = DateTime.Now.ToString();
                     string HistorySaveQuery = " INSERT INTO temperature_convert_history " +
                         "(converted_from, converted_to, converted_number, result, converted_datetime) VALUES " +
-                        "('"+ comboBox1.SelectedValue.ToString() + "', '"
-                        + comboBox2.SelectedValue.ToString() + "', "
+                        "('"+ comboBox1.SelectedItem.ToString() + "', '"
+                        + comboBox2.SelectedItem.ToString() + "', "
                         +Number+", '"+
                         Result.ToString()+"','"+
                         time+"')";
