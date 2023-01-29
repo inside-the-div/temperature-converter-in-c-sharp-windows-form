@@ -38,14 +38,15 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.LabelFormula = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(173, 81);
+            this.textBox2.Location = new System.Drawing.Point(202, 81);
             this.textBox2.Name = "textBox2";
             this.textBox2.PlaceholderText = "Output";
-            this.textBox2.Size = new System.Drawing.Size(129, 23);
+            this.textBox2.Size = new System.Drawing.Size(160, 23);
             this.textBox2.TabIndex = 2;
             this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             this.textBox2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox2_KeyUp);
@@ -55,7 +56,7 @@
             this.textBox1.Location = new System.Drawing.Point(11, 81);
             this.textBox1.Name = "textBox1";
             this.textBox1.PlaceholderText = "Input";
-            this.textBox1.Size = new System.Drawing.Size(129, 23);
+            this.textBox1.Size = new System.Drawing.Size(160, 23);
             this.textBox1.TabIndex = 2;
             this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
@@ -71,7 +72,7 @@
             "Rankine"});
             this.comboBox1.Location = new System.Drawing.Point(11, 59);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(129, 23);
+            this.comboBox1.Size = new System.Drawing.Size(160, 23);
             this.comboBox1.TabIndex = 3;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -84,9 +85,9 @@
             "Kelvin",
             "Fahrenheit",
             "Rankine"});
-            this.comboBox2.Location = new System.Drawing.Point(173, 59);
+            this.comboBox2.Location = new System.Drawing.Point(202, 59);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(129, 23);
+            this.comboBox2.Size = new System.Drawing.Size(160, 23);
             this.comboBox2.TabIndex = 3;
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
@@ -94,7 +95,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(39, 9);
+            this.label4.Location = new System.Drawing.Point(71, 9);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(239, 30);
             this.label4.TabIndex = 4;
@@ -103,15 +104,15 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(50, 121);
+            this.label5.Location = new System.Drawing.Point(11, 119);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(213, 15);
+            this.label5.Size = new System.Drawing.Size(245, 15);
             this.label5.TabIndex = 5;
-            this.label5.Text = "For keep  history press the Enter button";
+            this.label5.Text = "Note: For keep  history press the Enter button";
             // 
             // btnHistory
             // 
-            this.btnHistory.Location = new System.Drawing.Point(11, 182);
+            this.btnHistory.Location = new System.Drawing.Point(11, 224);
             this.btnHistory.Name = "btnHistory";
             this.btnHistory.Size = new System.Drawing.Size(109, 23);
             this.btnHistory.TabIndex = 6;
@@ -121,7 +122,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(241, 182);
+            this.btnExit.Location = new System.Drawing.Point(301, 224);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(61, 23);
             this.btnExit.TabIndex = 6;
@@ -132,26 +133,37 @@
             // LabelFormula
             // 
             this.LabelFormula.AutoSize = true;
-            this.LabelFormula.Location = new System.Drawing.Point(50, 147);
+            this.LabelFormula.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LabelFormula.Location = new System.Drawing.Point(95, 162);
             this.LabelFormula.Name = "LabelFormula";
-            this.LabelFormula.Size = new System.Drawing.Size(0, 15);
+            this.LabelFormula.Size = new System.Drawing.Size(0, 21);
             this.LabelFormula.TabIndex = 5;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(146, 70);
+            this.label3.Location = new System.Drawing.Point(175, 79);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(21, 21);
             this.label3.TabIndex = 1;
             this.label3.Text = "=";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(12, 162);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 21);
+            this.label1.TabIndex = 7;
+            // 
             // TempConverter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(313, 213);
+            this.ClientSize = new System.Drawing.Size(386, 259);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnHistory);
             this.Controls.Add(this.LabelFormula);
@@ -183,5 +195,6 @@
         private Button btnExit;
         private Label LabelFormula;
         private Label label3;
+        private Label label1;
     }
 }

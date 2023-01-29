@@ -2,11 +2,12 @@ using Microsoft.Data;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
+
 namespace TemperatureConverter
 {
     public partial class TempConverter : Form
     {
-        SqlConnection DBconnection = new SqlConnection("Data Source=.; Initial Catalog=temperature_converter_db; TrustServerCertificate=True; Integrated Security=True ");
+        SqlConnection DBconnection = new SqlConnection(Properties.Settings.Default.con);
         public TempConverter()
         {
             InitializeComponent();
@@ -31,7 +32,7 @@ namespace TemperatureConverter
             {
                 double Number = Convert.ToDouble(textBox2.Text);
                 double Result = TempCconverter(Number, comboBox2.SelectedItem.ToString(), comboBox1.SelectedItem.ToString());
-                textBox1.Text = Result.ToString();
+                textBox1.Text = Result.ToString("N2");
             }
         }
 
@@ -45,7 +46,7 @@ namespace TemperatureConverter
             {
                 double Number = Convert.ToDouble(textBox1.Text);
                 double Result = TempCconverter(Number, comboBox1.SelectedItem.ToString(), comboBox2.SelectedItem.ToString());
-                textBox2.Text = Result.ToString();
+                textBox2.Text = Result.ToString("N2");
             }            
         }
 
@@ -59,7 +60,7 @@ namespace TemperatureConverter
             {
                 double Number = Convert.ToDouble(textBox1.Text);
                 double Result = TempCconverter(Number, comboBox1.SelectedItem.ToString(), comboBox2.SelectedItem.ToString());
-                textBox2.Text = Result.ToString();
+                textBox2.Text = Result.ToString("N2");
                 if (e.KeyCode == Keys.Enter)
                 {
                     string time = DateTime.Now.ToString();
@@ -71,7 +72,7 @@ namespace TemperatureConverter
                         Result.ToString()+"','"+
                         time+"')";
                     DBconnection.Open();
-                    SqlCommand command = new SqlCommand(HistorySaveQuery,DBconnection);
+                    SqlCommand command = new SqlCommand(HistorySaveQuery, DBconnection);
                     command.ExecuteNonQuery();
                     DBconnection.Close();
                 }
@@ -88,7 +89,7 @@ namespace TemperatureConverter
             {
                 double Number = Convert.ToDouble(textBox2.Text);
                 double Result = TempCconverter(Number, comboBox2.SelectedItem.ToString(), comboBox1.SelectedItem.ToString());
-                textBox1.Text = Result.ToString();
+                textBox1.Text = Result.ToString("N2");
                 if (e.KeyCode == Keys.Enter)
                 {
                     string time = DateTime.Now.ToString();
@@ -117,18 +118,21 @@ namespace TemperatureConverter
                 if (to_unit == "kelvin")
                 {
                     temp = temp + 273.15;
-                    LabelFormula.Text = ("Formula:\nKelvin = Celcius + 273.15");
+                    label1.Text = "Formula:";
+                    LabelFormula.Text = ("Kelvin = Celcius + 273.15");
                 }
                 else if (to_unit == "fahrenheit")
                 {
                     temp = temp * 9 / 5 + 32;
-                    LabelFormula.Text = ("Formula:\nFahrenheit = Celcius * 9/5 + 32");
+                    label1.Text = "Formula:";
+                    LabelFormula.Text = ("Fahrenheit = (Celcius * (9/5)) + 32");
                 }
 
                 else if (to_unit == "rankine")
                 {
                     temp = (temp * 9/5) + 491.67;
-                    LabelFormula.Text = ("Formula:\n Rankine = (Celsius x 9/5) + 491.67");
+                    label1.Text = "Formula:";
+                    LabelFormula.Text = ("Rankine = (Celsius x (9/5)) + 491.67");
                 }
             }
             else if (from_unit == "kelvin")
@@ -136,17 +140,20 @@ namespace TemperatureConverter
                 if (to_unit == "celsius")
                 {
                     temp = temp - 273.15;
-                    LabelFormula.Text = ("Formula:\nCelcius = Kelvin + 273.15");
+                    label1.Text = "Formula:";
+                    LabelFormula.Text = ("Celcius = Kelvin + 273.15");
                 }
                 else if (to_unit == "fahrenheit")
                 {
                     temp = (temp - 273.15) * 9/5 - 459.67;
-                    LabelFormula.Text = ("Formula:\nFahrenheit = (Kelvin  - 273.15) * 9/5 - 459.67");
+                    label1.Text = "Formula:";
+                    LabelFormula.Text = ("Fahrenheit = ((Kelvin  - 273.15) * (9/5)) - 459.67");
                 }
                 else if (to_unit == "rankine")
                 {
                     temp = temp * 9/5 + 491.67;
-                    LabelFormula.Text = ("Formula:\nRankine = (Kelvin  * 9/5) + 491.67");
+                    label1.Text = "Formula:";
+                    LabelFormula.Text = ("Rankine = (Kelvin  * (9/5)) + 491.67");
                 }
             }
             else if (from_unit == "fahrenheit")
@@ -154,17 +161,20 @@ namespace TemperatureConverter
                 if (to_unit == "celsius")
                 {
                     temp = (temp - 32) * 5/9;
-                    LabelFormula.Text = ("Formula:\nCelcius = (Fahrenheit - 32) * 5/9");
+                    label1.Text = "Formula:";
+                    LabelFormula.Text = ("Celcius = (Fahrenheit - 32) * (5/9)");
                 }
                 else if (to_unit == "kelvin")
                 {
                     temp = (temp + 459.67) * 5/9;
-                    LabelFormula.Text = ("Formula:\nKelvin = (Fahrenheit + 459.67) * 5/9");
+                    label1.Text = "Formula:";
+                    LabelFormula.Text = ("Kelvin = (Fahrenheit + 459.67) * (5/9)");
                 }
                 else if (to_unit == "rankine")
                 {
                     temp = temp + 459.67;
-                    LabelFormula.Text = ("Formula:\nRankine = Fahrenheit + 459.67");
+                    label1.Text = "Formula:";
+                    LabelFormula.Text = ("Rankine = Fahrenheit + 459.67");
                 }
             }
             else if (from_unit == "rankine")
@@ -172,17 +182,20 @@ namespace TemperatureConverter
                 if (to_unit == "celsius")
                 {
                     temp = (temp - 491.67) * 5/9;
-                    LabelFormula.Text = ("Formula:\nCelcius = (Rankine - 491.67) * 5/9");
+                    label1.Text = "Formula:";
+                    LabelFormula.Text = ("Celcius = (Rankine - 491.67) * (5/9)");
                 }
                 else if (to_unit == "kelvin")
                 {
                     temp = temp * 5/9;
-                    LabelFormula.Text = ("Formula:\nKelvin = (Rankine * 5/9");
+                    label1.Text = "Formula:";
+                    LabelFormula.Text = ("Kelvin = (Rankine * (5/9))");
                 }
                 else if (to_unit == "fahrenheit")
                 {
                     temp = temp - 459.67;
-                    LabelFormula.Text = ("Formula:\nFahrenheit = (Rankine 491.67) * 9/5");
+                    label1.Text = "Formula:";
+                    LabelFormula.Text = ("Fahrenheit = (Rankine - 491.67) * (9/5)");
                 }
             }
             else

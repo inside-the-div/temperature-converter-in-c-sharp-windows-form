@@ -14,7 +14,7 @@ namespace TemperatureConverter
    
     public partial class History : Form
     {
-        SqlConnection DBconnection = new SqlConnection("Data Source=.; Initial Catalog=temperature_converter_db; TrustServerCertificate=True; Integrated Security=True ");
+        SqlConnection DBconnection = new SqlConnection(Properties.Settings.Default.con);
         public History()
         {
             InitializeComponent();
@@ -36,11 +36,11 @@ namespace TemperatureConverter
         public void DisplayHistory()
         {
             string HistoryShow = "SELECT convert_id AS ID, " +
-                "converted_from AS 'Unit From', " +
-                "converted_to AS 'Unit TO', " +
-                "converted_number AS 'Convert Number',  " +
+                "converted_from AS 'From', " +
+                "converted_to AS 'TO', " +
+                "converted_number AS 'Input',  " +
                 "result AS Result, " +
-                "converted_datetime AS Date " +
+                "converted_datetime AS 'Date Time' " +
                 "FROM temperature_convert_history";
             SqlDataAdapter SQLselectQuery = new SqlDataAdapter(HistoryShow, DBconnection);
             DataTable HistoryDataTable = new DataTable();
@@ -115,6 +115,11 @@ namespace TemperatureConverter
                 DatagridviewHistory.ClearSelection();
             }
             DBconnection.Close();
+            DisplayHistory();
+        }
+
+        private void btnShowAll_Click(object sender, EventArgs e)
+        {
             DisplayHistory();
         }
     }
