@@ -87,16 +87,16 @@ namespace TemperatureConverter
             Ids = Ids.TrimEnd(',');
             if (Ids == "")
             {
-                MessageBox.Show("Select a History frist.");
+                MessageBox.Show("Select a history frist.");
             }
             else
             {
-                string DeleteQuerry = "DELETE FROM temperature_convert_history  WHERE  convert_id IN (" + Ids + ")";
+                string DeleteQuerry = "DELETE FROM temperature_convert_history WHERE convert_id IN (" + Ids + ")";
                 DBconnection.Open();
                 SqlCommand deleteCommand = new SqlCommand(DeleteQuerry, DBconnection);
                 if (deleteCommand.ExecuteNonQuery() > 0)
                 {
-                    MessageBox.Show("Selected History deleted successfully.");
+                    MessageBox.Show("Selected history deleted successfully.");
                     DatagridviewHistory.ClearSelection();
                 }
                 DBconnection.Close();
@@ -111,7 +111,7 @@ namespace TemperatureConverter
             SqlCommand deleteCommand = new SqlCommand(DeleteQuerry, DBconnection);
             if (deleteCommand.ExecuteNonQuery() > 0)
             {
-                MessageBox.Show("All History deleted successfully.");
+                MessageBox.Show("All history deleted successfully.");
                 DatagridviewHistory.ClearSelection();
             }
             DBconnection.Close();
