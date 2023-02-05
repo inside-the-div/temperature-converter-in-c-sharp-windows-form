@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.OutputTextBox = new System.Windows.Forms.TextBox();
+            this.InputTextBox = new System.Windows.Forms.TextBox();
+            this.FromComboBox = new System.Windows.Forms.ComboBox();
+            this.ToComboBox = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnHistory = new System.Windows.Forms.Button();
@@ -41,55 +41,55 @@
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // textBox2
+            // OutputTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(202, 81);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PlaceholderText = "Output";
-            this.textBox2.Size = new System.Drawing.Size(160, 23);
-            this.textBox2.TabIndex = 2;
-            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
-            this.textBox2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox2_KeyUp);
+            this.OutputTextBox.Location = new System.Drawing.Point(202, 81);
+            this.OutputTextBox.Name = "OutputTextBox";
+            this.OutputTextBox.PlaceholderText = "Output";
+            this.OutputTextBox.Size = new System.Drawing.Size(160, 23);
+            this.OutputTextBox.TabIndex = 2;
+            this.OutputTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OutputTextBox_KeyPress);
+            this.OutputTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.OutputTextBox_KeyUp);
             // 
-            // textBox1
+            // InputTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(11, 81);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PlaceholderText = "Input";
-            this.textBox1.Size = new System.Drawing.Size(160, 23);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
-            this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
+            this.InputTextBox.Location = new System.Drawing.Point(11, 81);
+            this.InputTextBox.Name = "InputTextBox";
+            this.InputTextBox.PlaceholderText = "Input";
+            this.InputTextBox.Size = new System.Drawing.Size(160, 23);
+            this.InputTextBox.TabIndex = 2;
+            this.InputTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.InputTextBox_KeyPress);
+            this.InputTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.InputTextBox_KeyUp);
             // 
-            // comboBox1
+            // FromComboBox
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.FromComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FromComboBox.FormattingEnabled = true;
+            this.FromComboBox.Items.AddRange(new object[] {
             "Celsius",
             "Kelvin",
             "Fahrenheit",
             "Rankine"});
-            this.comboBox1.Location = new System.Drawing.Point(11, 59);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(160, 23);
-            this.comboBox1.TabIndex = 3;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.FromComboBox.Location = new System.Drawing.Point(11, 59);
+            this.FromComboBox.Name = "FromComboBox";
+            this.FromComboBox.Size = new System.Drawing.Size(160, 23);
+            this.FromComboBox.TabIndex = 3;
+            this.FromComboBox.SelectedIndexChanged += new System.EventHandler(this.FromComboBox_SelectedIndexChanged);
             // 
-            // comboBox2
+            // ToComboBox
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.ToComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ToComboBox.FormattingEnabled = true;
+            this.ToComboBox.Items.AddRange(new object[] {
             "Celsius",
             "Kelvin",
             "Fahrenheit",
             "Rankine"});
-            this.comboBox2.Location = new System.Drawing.Point(202, 59);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(160, 23);
-            this.comboBox2.TabIndex = 3;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.ToComboBox.Location = new System.Drawing.Point(202, 59);
+            this.ToComboBox.Name = "ToComboBox";
+            this.ToComboBox.Size = new System.Drawing.Size(160, 23);
+            this.ToComboBox.TabIndex = 3;
+            this.ToComboBox.SelectedIndexChanged += new System.EventHandler(this.ToComboBox_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -169,10 +169,10 @@
             this.Controls.Add(this.LabelFormula);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.ToComboBox);
+            this.Controls.Add(this.FromComboBox);
+            this.Controls.Add(this.InputTextBox);
+            this.Controls.Add(this.OutputTextBox);
             this.Controls.Add(this.label3);
             this.MaximumSize = new System.Drawing.Size(402, 298);
             this.Name = "TempConverter";
@@ -185,10 +185,10 @@
         }
 
         #endregion
-        private TextBox textBox2;
-        private TextBox textBox1;
-        private ComboBox comboBox1;
-        private ComboBox comboBox2;
+        private TextBox OutputTextBox;
+        private TextBox InputTextBox;
+        private ComboBox FromComboBox;
+        private ComboBox ToComboBox;
         private Label label4;
         private Label label5;
         private Button btnHistory;

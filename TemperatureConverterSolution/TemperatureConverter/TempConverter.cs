@@ -11,63 +11,62 @@ namespace TemperatureConverter
         public TempConverter()
         {
             InitializeComponent();
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox2_KeyUp);
-
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.InputTextBox_KeyUp);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.OutputTextBox_KeyUp);
         }
 
         private void TempConverter_Load(object sender, EventArgs e)
         {
-            comboBox1.SelectedIndex = 0;
-            comboBox2.SelectedIndex = 1;
+            FromComboBox.SelectedIndex = 0;
+            ToComboBox.SelectedIndex = 1;
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void FromComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (textBox2.Text == "" || textBox2.Text == "-" || textBox2.Text == "+" || textBox2.Text == ".")
+            if (OutputTextBox.Text == "" || OutputTextBox.Text == "-" || OutputTextBox.Text == "+" || OutputTextBox.Text == ".")
             {
-                textBox2.Text = string.Empty;
+                OutputTextBox.Text = string.Empty;
             }
             else
             {
-                double Number = Convert.ToDouble(textBox2.Text);
-                double Result = TempCconverter(Number, comboBox2.SelectedItem.ToString(), comboBox1.SelectedItem.ToString());
-                textBox1.Text = Result.ToString("N2");
+                double Number = Convert.ToDouble(OutputTextBox.Text);
+                double Result = TempCconverter(Number, ToComboBox.SelectedItem.ToString(), FromComboBox.SelectedItem.ToString());
+                InputTextBox.Text = Result.ToString("N2");
             }
         }
 
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private void ToComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (textBox1.Text == "" || textBox1.Text == "-" || textBox1.Text == "+" || textBox1.Text == ".")
+            if (InputTextBox.Text == "" || InputTextBox.Text == "-" || InputTextBox.Text == "+" || InputTextBox.Text == ".")
             {
-                textBox2.Text = string.Empty;
+                OutputTextBox.Text = string.Empty;
             }
             else
             {
-                double Number = Convert.ToDouble(textBox1.Text);
-                double Result = TempCconverter(Number, comboBox1.SelectedItem.ToString(), comboBox2.SelectedItem.ToString());
-                textBox2.Text = Result.ToString("N2");
+                double Number = Convert.ToDouble(InputTextBox.Text);
+                double Result = TempCconverter(Number, FromComboBox.SelectedItem.ToString(), ToComboBox.SelectedItem.ToString());
+                OutputTextBox.Text = Result.ToString("N2");
             }            
         }
 
-        private void textBox1_KeyUp(object sender, KeyEventArgs e)
+        private void InputTextBox_KeyUp(object sender, KeyEventArgs e)
         {
-            if (textBox1.Text == "" || textBox1.Text == "-" || textBox1.Text == "+" || textBox1.Text == ".")
+            if (InputTextBox.Text == "" || InputTextBox.Text == "-" || InputTextBox.Text == "+" || InputTextBox.Text == ".")
             {
-                textBox2.Text = string.Empty;
+                OutputTextBox.Text = string.Empty;
             }
             else
             {
-                double Number = Convert.ToDouble(textBox1.Text);
-                double Result = TempCconverter(Number, comboBox1.SelectedItem.ToString(), comboBox2.SelectedItem.ToString());
-                textBox2.Text = Result.ToString("N2");
+                double Number = Convert.ToDouble(InputTextBox.Text);
+                double Result = TempCconverter(Number, FromComboBox.SelectedItem.ToString(), ToComboBox.SelectedItem.ToString());
+                OutputTextBox.Text = Result.ToString("N2");
                 if (e.KeyCode == Keys.Enter)
                 {
                     string time = DateTime.Now.ToString();
                     string HistorySaveQuery = "INSERT INTO temperature_convert_history " +
                         "(converted_from, converted_to, converted_number, result, converted_datetime) VALUES " +
-                        "('"+ comboBox1.SelectedItem.ToString() + "', '"
-                        + comboBox2.SelectedItem.ToString() + "', "
+                        "('"+ FromComboBox.SelectedItem.ToString() + "', '"
+                        + ToComboBox.SelectedItem.ToString() + "', "
                         +Number+", '"+
                         Result.ToString()+"','"+
                         time+"')";
@@ -79,24 +78,24 @@ namespace TemperatureConverter
             }           
         }
 
-        private void textBox2_KeyUp(object sender, KeyEventArgs e)
+        private void OutputTextBox_KeyUp(object sender, KeyEventArgs e)
         {
-            if (textBox2.Text == "" || textBox2.Text == "-" || textBox2.Text == "+" || textBox2.Text == ".")
+            if (OutputTextBox.Text == "" || OutputTextBox.Text == "-" || OutputTextBox.Text == "+" || OutputTextBox.Text == ".")
             {
-                textBox2.Text = string.Empty;
+                OutputTextBox.Text = string.Empty;
             }
             else
             {
-                double Number = Convert.ToDouble(textBox2.Text);
-                double Result = TempCconverter(Number, comboBox2.SelectedItem.ToString(), comboBox1.SelectedItem.ToString());
-                textBox1.Text = Result.ToString("N2");
+                double Number = Convert.ToDouble(OutputTextBox.Text);
+                double Result = TempCconverter(Number, ToComboBox.SelectedItem.ToString(), FromComboBox.SelectedItem.ToString());
+                InputTextBox.Text = Result.ToString("N2");
                 if (e.KeyCode == Keys.Enter)
                 {
                     string time = DateTime.Now.ToString();
-                    string HistorySaveQuery = " INSERT INTO temperature_convert_history " +
+                    string HistorySaveQuery = "INSERT INTO temperature_convert_history " +
                         "(converted_from, converted_to, converted_number, result, converted_datetime) VALUES " +
-                        "('" + comboBox2.SelectedValue.ToString() + "', '"
-                        + comboBox1.SelectedValue.ToString() + "', "
+                        "('" + ToComboBox.SelectedValue.ToString() + "', '"
+                        + FromComboBox.SelectedValue.ToString() + "', "
                         + Number + ", '" +
                         Result.ToString() + "','" +
                         time + "')";
@@ -305,17 +304,17 @@ namespace TemperatureConverter
             return true;
         }
 
-        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        private void InputTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!IsOKForDecimalTextBox(e.KeyChar, textBox1))
+            if (!IsOKForDecimalTextBox(e.KeyChar, InputTextBox))
             {
                 e.Handled = true;
             }            
         }
 
-        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        private void OutputTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!IsOKForDecimalTextBox(e.KeyChar, textBox2))
+            if (!IsOKForDecimalTextBox(e.KeyChar, OutputTextBox))
             {
                 e.Handled = true;
             }
