@@ -108,7 +108,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(245, 15);
             this.label5.TabIndex = 5;
-            this.label5.Text = "Note: For keep  history press the Enter button";
+            this.label5.Text = "Note:To keep history press the Enter button.";
             // 
             // btnHistory
             // 
