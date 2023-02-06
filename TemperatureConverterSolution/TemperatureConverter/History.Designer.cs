@@ -46,12 +46,13 @@
             this.btnBack.TabIndex = 1;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = true;
-            this.btnBack.Click += new System.EventHandler(this.button1_Click);
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // DatagridviewHistory
             // 
             this.DatagridviewHistory.AllowUserToAddRows = false;
             this.DatagridviewHistory.AllowUserToDeleteRows = false;
+            this.DatagridviewHistory.AllowUserToResizeColumns = false;
             this.DatagridviewHistory.AllowUserToResizeRows = false;
             this.DatagridviewHistory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DatagridviewHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -75,7 +76,7 @@
             // 
             // btnDeleteAll
             // 
-            this.btnDeleteAll.Location = new System.Drawing.Point(458, 6);
+            this.btnDeleteAll.Location = new System.Drawing.Point(458, 10);
             this.btnDeleteAll.Name = "btnDeleteAll";
             this.btnDeleteAll.Size = new System.Drawing.Size(75, 23);
             this.btnDeleteAll.TabIndex = 3;
@@ -103,7 +104,7 @@
             // 
             // btnShowAll
             // 
-            this.btnShowAll.Location = new System.Drawing.Point(216, 6);
+            this.btnShowAll.Location = new System.Drawing.Point(196, 10);
             this.btnShowAll.Name = "btnShowAll";
             this.btnShowAll.Size = new System.Drawing.Size(75, 23);
             this.btnShowAll.TabIndex = 6;
@@ -115,7 +116,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(543, 278);
+            this.ClientSize = new System.Drawing.Size(545, 278);
             this.Controls.Add(this.btnShowAll);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePickerSearch);

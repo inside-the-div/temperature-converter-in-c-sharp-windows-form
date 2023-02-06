@@ -29,8 +29,10 @@ namespace TemperatureConverter
             }
             else
             {
+                string FromTemperature = ToComboBox.SelectedItem.ToString();
+                string ToTemperature = FromComboBox.SelectedItem.ToString();
                 double Number = Convert.ToDouble(OutputTextBox.Text);
-                double Result = TempCconverter(Number, ToComboBox.SelectedItem.ToString(), FromComboBox.SelectedItem.ToString());
+                double Result = TempCconverter(Number, FromTemperature, ToTemperature);
                 InputTextBox.Text = Result.ToString("N2");
             }
         }
@@ -43,8 +45,10 @@ namespace TemperatureConverter
             }
             else
             {
+                string FromTemperature = FromComboBox.SelectedItem.ToString();
+                string ToTemperature = ToComboBox.SelectedItem.ToString();
                 double Number = Convert.ToDouble(InputTextBox.Text);
-                double Result = TempCconverter(Number, FromComboBox.SelectedItem.ToString(), ToComboBox.SelectedItem.ToString());
+                double Result = TempCconverter(Number, FromTemperature, ToTemperature);
                 OutputTextBox.Text = Result.ToString("N2");
             }            
         }
@@ -57,16 +61,18 @@ namespace TemperatureConverter
             }
             else
             {
+                string FromTemperature = FromComboBox.SelectedItem.ToString();
+                string ToTemperature = ToComboBox.SelectedItem.ToString();
                 double Number = Convert.ToDouble(InputTextBox.Text);
-                double Result = TempCconverter(Number, FromComboBox.SelectedItem.ToString(), ToComboBox.SelectedItem.ToString());
+                double Result = TempCconverter(Number, FromTemperature, ToTemperature);
                 OutputTextBox.Text = Result.ToString("N2");
                 if (e.KeyCode == Keys.Enter)
                 {
                     string time = DateTime.Now.ToString();
                     string HistorySaveQuery = "INSERT INTO temperature_convert_history " +
                         "(converted_from, converted_to, converted_number, result, converted_datetime) VALUES " +
-                        "('"+ FromComboBox.SelectedItem.ToString() + "', '"
-                        + ToComboBox.SelectedItem.ToString() + "', "
+                        "('"+ FromTemperature + "', '"
+                        + ToTemperature + "', "
                         +Number+", '"+
                         Result.ToString()+"','"+
                         time+"')";
@@ -86,16 +92,18 @@ namespace TemperatureConverter
             }
             else
             {
+                string FromTemperature = ToComboBox.SelectedItem.ToString();
+                string ToTemperature = FromComboBox.SelectedItem.ToString();
                 double Number = Convert.ToDouble(OutputTextBox.Text);
-                double Result = TempCconverter(Number, ToComboBox.SelectedItem.ToString(), FromComboBox.SelectedItem.ToString());
+                double Result = TempCconverter(Number, FromTemperature, ToTemperature);
                 InputTextBox.Text = Result.ToString("N2");
                 if (e.KeyCode == Keys.Enter)
                 {
                     string time = DateTime.Now.ToString();
                     string HistorySaveQuery = "INSERT INTO temperature_convert_history " +
                         "(converted_from, converted_to, converted_number, result, converted_datetime) VALUES " +
-                        "('" + ToComboBox.SelectedValue.ToString() + "', '"
-                        + FromComboBox.SelectedValue.ToString() + "', "
+                        "('" + FromTemperature + "', '"
+                        + ToTemperature + "', "
                         + Number + ", '" +
                         Result.ToString() + "','" +
                         time + "')";
@@ -108,7 +116,7 @@ namespace TemperatureConverter
             }
         }
 
-        public double TempCconverter(double temp, string from_unit, string to_unit)
+        public double TempCconverter(double inputTemperature, string from_unit, string to_unit)
         {
             from_unit = from_unit.ToLower();
             to_unit = to_unit.ToLower();
@@ -116,20 +124,20 @@ namespace TemperatureConverter
             {
                 if (to_unit == "kelvin")
                 {
-                    temp = temp + 273.15;
+                    inputTemperature = inputTemperature + 273.15;
                     label1.Text = "Formula:";
                     LabelFormula.Text = ("Kelvin = Celcius + 273.15");
                 }
                 else if (to_unit == "fahrenheit")
                 {
-                    temp = temp * 9 / 5 + 32;
+                    inputTemperature = inputTemperature * 9 / 5 + 32;
                     label1.Text = "Formula:";
                     LabelFormula.Text = ("Fahrenheit = (Celcius * (9/5)) + 32");
                 }
 
                 else if (to_unit == "rankine")
                 {
-                    temp = (temp * 9/5) + 491.67;
+                    inputTemperature = (inputTemperature * 9/5) + 491.67;
                     label1.Text = "Formula:";
                     LabelFormula.Text = ("Rankine = (Celsius x (9/5)) + 491.67");
                 }
@@ -138,19 +146,19 @@ namespace TemperatureConverter
             {
                 if (to_unit == "celsius")
                 {
-                    temp = temp - 273.15;
+                    inputTemperature = inputTemperature - 273.15;
                     label1.Text = "Formula:";
                     LabelFormula.Text = ("Celcius = Kelvin + 273.15");
                 }
                 else if (to_unit == "fahrenheit")
                 {
-                    temp = (temp - 273.15) * 9/5 - 459.67;
+                    inputTemperature = (inputTemperature - 273.15) * 9/5 - 459.67;
                     label1.Text = "Formula:";
                     LabelFormula.Text = ("Fahrenheit = ((Kelvin  - 273.15) * (9/5)) - 459.67");
                 }
                 else if (to_unit == "rankine")
                 {
-                    temp = temp * 9/5 + 491.67;
+                    inputTemperature = inputTemperature * 9/5 + 491.67;
                     label1.Text = "Formula:";
                     LabelFormula.Text = ("Rankine = (Kelvin  * (9/5)) + 491.67");
                 }
@@ -159,19 +167,19 @@ namespace TemperatureConverter
             {
                 if (to_unit == "celsius")
                 {
-                    temp = (temp - 32) * 5/9;
+                    inputTemperature = (inputTemperature - 32) * 5/9;
                     label1.Text = "Formula:";
                     LabelFormula.Text = ("Celcius = (Fahrenheit - 32) * (5/9)");
                 }
                 else if (to_unit == "kelvin")
                 {
-                    temp = (temp + 459.67) * 5/9;
+                    inputTemperature = (inputTemperature + 459.67) * 5/9;
                     label1.Text = "Formula:";
                     LabelFormula.Text = ("Kelvin = (Fahrenheit + 459.67) * (5/9)");
                 }
                 else if (to_unit == "rankine")
                 {
-                    temp = temp + 459.67;
+                    inputTemperature = inputTemperature + 459.67;
                     label1.Text = "Formula:";
                     LabelFormula.Text = ("Rankine = Fahrenheit + 459.67");
                 }
@@ -180,28 +188,28 @@ namespace TemperatureConverter
             {
                 if (to_unit == "celsius")
                 {
-                    temp = (temp - 491.67) * 5/9;
+                    inputTemperature = (inputTemperature - 491.67) * 5/9;
                     label1.Text = "Formula:";
                     LabelFormula.Text = ("Celcius = (Rankine - 491.67) * (5/9)");
                 }
                 else if (to_unit == "kelvin")
                 {
-                    temp = temp * 5/9;
+                    inputTemperature = inputTemperature * 5/9;
                     label1.Text = "Formula:";
                     LabelFormula.Text = ("Kelvin = (Rankine * (5/9))");
                 }
                 else if (to_unit == "fahrenheit")
                 {
-                    temp = temp - 459.67;
+                    inputTemperature = inputTemperature - 459.67;
                     label1.Text = "Formula:";
                     LabelFormula.Text = ("Fahrenheit = (Rankine - 491.67) * (9/5)");
                 }
             }
             else
             {
-                return temp;
+                return inputTemperature;
             }
-            return temp;
+            return inputTemperature;
         }
 
         private bool IsOKForDecimalTextBox(char theCharacter, TextBox theTextBox)

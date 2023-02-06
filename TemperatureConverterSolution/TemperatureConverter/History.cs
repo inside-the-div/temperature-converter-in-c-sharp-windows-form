@@ -20,12 +20,7 @@ namespace TemperatureConverter
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            TempConverter tempConverter = new TempConverter();
-            tempConverter.Show();
-        }
+        
 
         private void History_Load(object sender, EventArgs e)
         {
@@ -37,7 +32,7 @@ namespace TemperatureConverter
         {
             string HistoryShow = "SELECT convert_id AS ID, " +
                 "converted_from AS 'From', " +
-                "converted_to AS 'TO', " +
+                "converted_to AS 'To', " +
                 "converted_number AS 'Input',  " +
                 "result AS Result, " +
                 "converted_datetime AS 'Date Time' " +
@@ -121,6 +116,13 @@ namespace TemperatureConverter
         private void btnShowAll_Click(object sender, EventArgs e)
         {
             DisplayHistory();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            TempConverter tempConverter = new TempConverter();
+            tempConverter.Show();
         }
     }
 }
